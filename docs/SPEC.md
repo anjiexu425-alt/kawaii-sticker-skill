@@ -29,7 +29,7 @@
 
 ### 1.1 一句话定位
 
-Kawaii Sticker Skill 是一个**通用的、开源的 AI Skill**：用户将其安装进 AI 助手后，助手会为用户生成 kawaii 聊天贴纸（美乐蒂手绘 / 手帐风，My Melody-style hand-drawn / journal-diary aesthetic）。
+Kawaii Sticker Skill 是一个**通用的、开源的 AI Skill**：用户将其安装进 AI 助手后，助手会为用户生成 kawaii 聊天贴纸（手绘绘本 × 日系萌系，hand-drawn picture-book × Japanese kawaii；默认角色为原创「胖墩」）。
 
 ### 1.2 它是什么
 
@@ -114,9 +114,9 @@ Kawaii Sticker Skill 是一个**通用的、开源的 AI Skill**：用户将其�
 ### 4.2 回退：角色档案 (Fallback: Character Profile)
 
 - 无参考图时，加载 `character_profiles/` 下的**文字档案**。
-- 选择规则：用户指定档案名 > `SKILL.md` 中声明的默认档案 > 仓库首个可用档案（当前示例默认 `character_profiles/my-melody.md`）。
+- 选择规则：用户指定档案名 > `SKILL.md` 中声明的默认档案 > 仓库首个可用档案（当前默认原创角色 `character_profiles/pangdun.md`，胖墩）。
 - 将档案文字内容解析为同样的 `feature_map` 结构，`character.source = "profile"`。
-- 仓库保持**通用**：`my-melody.md` 只是示例档案；新增角色只需增加一个 `.md` 档案文件，无需改代码。
+- 仓库保持**通用**：`pangdun.md` 为默认原创角色；`my-melody.md` 仅为文字风格示例（非默认）；新增角色只需增加一个 `.md` 档案文件，无需改代码。
 
 ### 4.3 特征图字段清单 (Feature-map Field List)
 
@@ -200,7 +200,7 @@ Kawaii Sticker Skill 是一个**通用的、开源的 AI Skill**：用户将其�
 | `mode` | ✅ | enum：`"single_line"` \| `"theme"` | 模式；须与 §3.1 判定一致 |
 | `character.source` | ✅ | enum：`"image"` \| `"profile"` | 角色来源 |
 | `character.feature_map` | ✅ | object（§4.3） | 锁定的角色特征，本次运行内所有契约相同 |
-| `style_anchor` | ✅ | string | 风格锚点，固定为「美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)」；主题模式整套一致 |
+| `style_anchor` | ✅ | string | 风格锚点，由角色档案的画风决定（默认胖墩：手绘绘本 × 日系萌系，hand-drawn picture-book × Japanese kawaii）；主题模式整套一致 |
 | `expression` | ✅ | string | 表情：开心 / 委屈 / 无语 / 元气…（单行模式 3 张互异） |
 | `pose_action` | ✅ | string | 姿势/动作：举手 / 蹲墙角 / 比心…（单行模式 3 张互异） |
 | `composition` | ✅ | string | 构图：居中特写 / 全身 / 对角 / 贴纸气泡…（单行模式 3 张互异） |
@@ -238,10 +238,10 @@ Kawaii Sticker Skill 是一个**通用的、开源的 AI Skill**：用户将其�
       "palette": {"主色": "奶油粉", "辅色": "白色", "点缀": "草莓红"},
       "signature_accessories": ["红色头巾", "小蝴蝶结"],
       "body_proportions": "Q 版 2 头身", "personality_keywords": ["软萌", "委屈"],
-      "texture": "铅笔手绘线稿", "derivation_notes": "取自 character_profiles/my-melody.md"
+      "texture": "柔软铅笔/细线稿、细腻绒毛、低饱和", "derivation_notes": "取自 character_profiles/pangdun.md"
     }
   },
-  "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+  "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
   "expression": "委屈巴巴", "pose_action": "蹲在角落画圈圈",
   "composition": "居中全身特写，配手帐虚线框", "sticker_elements": ["星星", "小花"],
   "text": {"content": "我真的会谢", "verbatim": true, "typography": {"style": "圆体加粗", "alignment": "横排居中", "outline": "白色描边"}},
@@ -265,7 +265,7 @@ Kawaii Sticker Skill 是一个**通用的、开源的 AI Skill**：用户将其�
 5. 🔧 **无商标/官方元素**：不出现真实 Logo、注册商标、官方角色原图。
 6. 🔧 **贴纸友好（sticker-friendly）**：粗而干净的描边（bold clean outlines）、高对比、表情/肢体在 64px 缩放下仍可读。
 7. 🔧 **方形留白安全边**：主体不贴边，四周留白 ≥ 5% 边距，避免裁切。
-8. **手帐风（journal-diary aesthetic）**：柔和粉彩（soft pastels）、扇形/兔耳等可爱母题、贴纸装饰层、圆润造型（cute rounded shapes）、手绘感（hand-drawn）。
+8. **画风遵循角色档案 `style_anchor`**（默认胖墩：手绘绘本 × 日系萌系——柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、柔和低饱和配色、贴纸装饰层、圆润造型、手绘感）；非默认档案按该档案画风执行。
 9. **中文可读**：若文案为中文，字体必须有中文字形（圆体/手写体），避免豆腐块/缺字。
 10. **角色一致**：同一次运行内所有贴纸符合锁定的 `feature_map`。
 
@@ -281,7 +281,7 @@ Kawaii Sticker Skill 是一个**通用的、开源的 AI Skill**：用户将其�
 |---|---|---|
 | M1 | 仓库存在 `SKILL.md`，YAML frontmatter 含 `name` 与 `description` | 解析 frontmatter |
 | M2 | 仓库存在 `docs/SPEC.md`、`docs/PROMPT_CONTRACT.md`、`docs/STRUCTURE.md` | 文件存在性 |
-| M3 | `character_profiles/` 至少含一个档案；`my-melody.md` 为纯文字（无图片引用素材） | 文件检查 + 无二进制图 |
+| M3 | `character_profiles/` 至少含一个档案；默认 `pangdun.md`（原创）+ 参考图 `pangdun.png`（用户原创资产，允许）；`my-melody.md` 为纯文字 | 文件检查 + 图片白名单（仅 `character_profiles/`） |
 | M4 | 仓库**不包含**官方图片素材；`tests/fixtures/` 内图片均为原创 | 目录策略 + fixture 声明 |
 | M5 | `examples/` 中单行模式示例契约与主题模式示例契约全部通过 §6.3 机器校验 | 契约校验器 |
 | M6 | 契约校验器（§6.3 规则 1–6）实现并可运行 | 单元测试通过 |
@@ -291,7 +291,7 @@ Kawaii Sticker Skill 是一个**通用的、开源的 AI Skill**：用户将其�
 ### 8.2 人工检查清单 (Manual Checklist) — 面向每套生成的贴纸
 
 - [ ] 文案逐字正确、恰好出现一次、无乱码/缺字（单行模式）。
-- [ ] 软萌手帐风一致：粉彩、圆润、手绘感、描边干净。
+- [ ] 画风一致：按档案 `style_anchor`（默认手绘绘本 × 日系萌系：柔软线稿、细腻绒毛、低饱和、圆润、手绘感）。
 - [ ] 单行模式 3 张：表情/姿势/构图明显可区分；主题模式 6 张：文案与情绪彼此不同、整套风格统一。
 - [ ] 64px 缩放下文案与表情仍可读。
 - [ ] 无第三方水印、Logo、商标、官方角色原图特征。
@@ -324,7 +324,7 @@ Kawaii Sticker Skill 是一个**通用的、开源的 AI Skill**：用户将其�
 | 风格锚点 | style anchor | 整套贴纸统一的视觉风格描述 |
 | 贴纸元素 | sticker elements | 装饰性元素（虚线框、闪粉、小花等） |
 | 硬约束 | hard constraints | 必须满足的视觉/格式规则（§7） |
-| 手帐风 | journal-diary aesthetic | 柔和粉彩、可爱母题、手绘贴纸的美学 |
+| 日系萌系手绘 | hand-drawn picture-book × Japanese kawaii | 柔软铅笔线稿、细腻绒毛、低饱和配色的萌系手绘美学（默认角色画风） |
 | 验收标准 | acceptance criteria | 机器可测 + 人工检查的达标清单（§8） |
 
 ---

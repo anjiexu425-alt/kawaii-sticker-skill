@@ -1,10 +1,10 @@
 # Kawaii Sticker Skill（可爱贴纸技能）
 
-> 一个**通用、开源**的 AI Skill：把它安装进 Codex / Claude Code / DeepSeek Harness 等 AI 助手后，助手会按「美乐蒂手绘 / 手帐风」为你的角色生成**聊天贴纸 / 表情包**。
+> 一个**通用、开源**的 AI Skill：把它安装进 Codex / Claude Code / DeepSeek Harness 等 AI 助手后，助手会按「手绘绘本 × 日系萌系」画风，为你的**原创角色**生成**聊天贴纸 / 表情包**（内置默认原创角色「胖墩」，可公开商用）。
 >
 > **这不是网站 / Web App**：无服务器、无后端、无部署——它只是一套随取随用的「指令 + 资产包」。
 >
-> 🌸 通用设计：美乐蒂（My Melody）只是 `character_profiles/` 里的一个**示例角色档案**；任何角色都能通过参考图或文字档案接入。
+> 🌸 通用设计：默认角色为**原创**「胖墩」（`character_profiles/pangdun.md` + 参考图）；任何角色都能通过参考图或文字档案接入；美乐蒂仅为文字风格示例（非默认）。
 
 ## 特性 (Features)
 
@@ -14,7 +14,7 @@
 | **主题模式** | 用户给一个主题（如「打工人」），AI 自拟文案，生成 **1 套 6 张**：文案 / 情绪 / 动作 / 构图互异、风格统一 |
 | **角色参考机制** | 上传 1–3 张参考图 → 提取结构化 `feature_map` 锁定角色；无图时回退 `character_profiles/` 文字档案 |
 | **宿主无关生图** | 宿主有原生生图工具 → 直接调用；否则输出**机器可校验的标准化 Prompt Contract**（`kss-prompt` JSON 块），可喂给任意生图模型 |
-| **视觉硬约束** | 1:1 方图、透明背景 PNG、文字烧录进画面、手帐风贴纸友好、无水印、无商标 |
+| **视觉硬约束** | 1:1 方图、透明背景 PNG、文字烧录进画面、画风遵循角色档案（默认手绘绘本 × 日系萌系）、无水印、无商标 |
 | **合规通用** | MIT 许可；仓库**不含任何官方版权图片**（详见 `NOTICE.md`） |
 
 ## 快速开始 (Quick Start)
@@ -60,10 +60,10 @@
     "format_version": "1.0",
     "mode": "single_line",
     "character": { "source": "profile", "feature_map": { "head_shape": "圆润", "...": "..." } },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "委屈巴巴",
     "pose_action": "蹲在角落画圈圈",
-    "composition": "居中全身特写，配手帐虚线框",
+    "composition": "居中全身特写，配手绘虚线框",
     "sticker_elements": ["星星", "小花"],
     "text": { "content": "我真的会谢", "verbatim": true, "typography": { "style": "圆体加粗" } },
     "output": { "format": "png", "background": "transparent", "aspect_ratio": "1:1", "text_baked": true },
@@ -91,7 +91,9 @@ kawaii-sticker-skill/
 ├── character_profiles/          # 文字版角色档案（通用、可扩展）
 │   ├── README.md                #   档案使用与新增指南
 │   ├── _template.md             #   新增角色模板
-│   └── my-melody.md             #   美乐蒂手绘/手帐风示例档案
+│   ├── pangdun.md               #   默认原创角色「胖墩」档案
+│   ├── pangdun.png              #   胖墩原创参考图（用户自有资产）
+│   └── my-melody.md             #   文字风格示例（非默认）
 ├── adapters/                    # 各宿主接入与能力协商
 │   ├── README.md                #   能力矩阵
 │   ├── claude-code.md
@@ -131,7 +133,7 @@ bash tests/run_tests.sh
 ## 许可与知识产权 (License & IP)
 
 - 代码与文档：**MIT License**（见 [LICENSE](LICENSE)）。
-- 本仓库**不含**任何受版权保护的官方图片素材（Sanrio 美乐蒂及其衍生产品、Logo、商标、水印）；`character_profiles/my-melody.md` 仅为文字版风格示例。用户上传的参考图必须拥有合法权利，生成内容的发布责任由用户承担。详见 [NOTICE.md](NOTICE.md)。
+- 本仓库**不含**任何受版权保护的官方图片素材（Sanrio 美乐蒂及其衍生产品、Logo、商标、水印）；默认角色「胖墩」为**用户原创设计**（`character_profiles/pangdun.md` + `pangdun.png`），可公开商用；`character_profiles/my-melody.md` 仅为文字版风格示例。详见 [NOTICE.md](NOTICE.md)。
 
 ## 贡献 (Contributing)
 

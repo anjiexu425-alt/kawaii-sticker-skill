@@ -1,7 +1,7 @@
-# Character Profile — 美乐蒂手绘示例档案 (My Melody-style Example Profile)
+# Character Profile — 美乐蒂手绘文字风格示例（非默认）(Non-default My Melody-style Text Example)
 
 > 本档案是**文字版**的角色风格与特征描述（纯 Markdown 文本，**不含任何图片素材**；非官方素材，非 Sanrio 资产——见 `NOTICE.md`）。
-> 本仓库是**通用**的：本档案仅为示例（`character_profiles/my-melody.md`）；新增角色 = 在 `character_profiles/` 新增一个 `.md` 档案即可，无需改任何代码（SPEC §4.2 / SKILL.md §6.3）。
+> 本档案为**非默认的文字风格示例**（第三方风格教学用途，非官方素材）；默认原创角色为「胖墩」（`character_profiles/pangdun.md`）。新增角色 = 在 `character_profiles/` 新增一个 `.md` 档案即可，无需改任何代码（SPEC §4.2 / SKILL.md §6.3）。
 > 使用方式：用户无参考图时，助手加载本档案并按下方「feature_map 对照表」解析出锁定的 `feature_map`（`character.source = "profile"`）。
 
 | 元数据 | 值 |

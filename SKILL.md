@@ -1,18 +1,18 @@
 ---
 name: kawaii-sticker-skill
-description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情包), My Melody-style hand-drawn (美乐蒂手绘) journal-diary (手帐风) stickers, character-reference-based sticker generation, or a sticker pack built from one sentence or one theme. Two modes: single-line mode keeps the user's copy verbatim and produces exactly 3 candidate stickers that share the same text and differ in expression, pose/action, composition, and sticker decorations; theme mode writes the copy itself and produces one set of 6 stickers with clearly distinct copy, emotion, pose, and composition but one consistent style. The character is locked from 1-3 user-provided reference images (derived as a structured feature map) or falls back to a text character profile from character_profiles/. Output is 1:1 transparent-background PNG with the text baked into the image, produced through the host's native image tool when available, otherwise through a standardized machine-checkable prompt contract."
+description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情包) in a hand-drawn picture-book × Japanese kawaii style (手绘绘本 × 日系萌系), character-reference-based sticker generation, or a sticker pack built from one sentence or one theme. Two modes: single-line mode keeps the user's copy verbatim and produces exactly 3 candidate stickers that share the same text and differ in expression, pose/action, composition, and sticker decorations; theme mode writes the copy itself and produces one set of 6 stickers with clearly distinct copy, emotion, pose, and composition but one consistent style. The character is locked from 1-3 user-provided reference images (derived as a structured feature map) or falls back to a text character profile from character_profiles/ (default original character 胖墩 Pangdun, pangdun.md). Output is 1:1 transparent-background PNG with the text baked into the image, produced through the host's native image tool when available, otherwise through a standardized machine-checkable prompt contract."
 ---
 
 # Kawaii Sticker Skill — 助手指令 (Skill Rules)
 
-> 本文件是技能的**入口指令（entry instructions）**。权威内容规格见 `docs/SPEC.md`；机器校验细节以 `docs/PROMPT_CONTRACT.md` 为准；仓库结构与文件归属见 `docs/STRUCTURE.md`；第三方 IP 边界见 `NOTICE.md`。本技能是**通用**的：仓库中的美乐蒂（My Melody）仅为示例角色档案，不是唯一角色。
+> 本文件是技能的**入口指令（entry instructions）**。权威内容规格见 `docs/SPEC.md`；机器校验细节以 `docs/PROMPT_CONTRACT.md` 为准；仓库结构与文件归属见 `docs/STRUCTURE.md`；第三方 IP 边界见 `NOTICE.md`。本技能是**通用**的：默认原创角色为「胖墩」（`character_profiles/pangdun.md`）；仓库中的美乐蒂（My Melody）仅为文字版风格示例档案（非默认、非官方素材）。
 
 ## 1. 用途与触发条件 (When to Use)
 
 当用户表达**贴纸/表情包诉求**时使用本技能，典型触发包括：
 
 - 「帮我做贴纸 / 给这句话配个贴纸 / 来一套 xx 主题贴纸」
-- 要求**美乐蒂手绘 / 手帐风**（My Melody-style hand-drawn / journal-diary aesthetic）贴纸
+- 要求**手绘绘本 × 日系萌系**可爱贴纸（hand-drawn picture-book × Japanese kawaii；默认角色「胖墩」画风见 `character_profiles/pangdun.md`）
 - 要求**基于角色参考图**生成贴纸（character-reference-based sticker generation）
 - 给出一句**原样文案**（单行模式）或一个**主题词**（主题模式）
 
@@ -41,7 +41,7 @@ description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情�
 ### 2.2 角色设定 (Character Setup)
 
 - **有参考图（1–3 张）**：按 §6.1 特征图提取协议逐图分析 → 交叉一致 → 锁定 `character.source = "image"` + 完整 `feature_map`。
-- **无参考图**：加载 `character_profiles/` 下文字档案。选择顺序：用户指定档案名 > 本技能默认档案（`character_profiles/my-melody.md`）> 仓库首个可用档案。解析为同一 `feature_map` 结构，`character.source = "profile"`。
+- **无参考图**：加载 `character_profiles/` 下文字档案。选择顺序：用户指定档案名 > 本技能默认档案（`character_profiles/pangdun.md`，原创角色「胖墩」）> 仓库首个可用档案。解析为同一 `feature_map` 结构，`character.source = "profile"`。
 - 若目录为空且无参考图：明确告知用户并询问；无法询问时按风格锚点生成无角色锁定贴纸，并在交付说明中标注。
 
 ### 2.3 能力协商 (Capability Negotiation)
@@ -79,7 +79,7 @@ description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情�
 5. **无商标/官方元素**：不出现真实 Logo、注册商标、官方角色原图。
 6. **贴纸友好**：粗而干净的描边（bold clean outlines）、高对比；表情与肢体在 64px 缩放下仍可读。
 7. **安全边**：主体不贴边，四周留白 ≥ 5% 边距，避免裁切。
-8. **手帐风（journal-diary aesthetic）**：柔和粉彩（soft pastels）、扇形/兔耳等可爱母题、贴纸装饰层、圆润造型（cute rounded shapes）、手绘感（hand-drawn）。
+8. **画风遵循角色档案 `style_anchor`**（默认胖墩：手绘绘本 × 日系萌系——柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、柔和低饱和配色、贴纸装饰层、圆润造型、手绘感）；非默认档案按该档案画风执行。
 9. **中文可读**：中文文案必须使用含中文字形的字体（圆体/手写体），避免豆腐块/缺字。
 10. **角色一致**：本次运行内所有贴纸符合锁定的 `feature_map`。
 
@@ -119,7 +119,7 @@ description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情�
 
 ### 6.3 档案使用 (Profile Usage)
 
-- 档案为纯文字 Markdown（无图片素材）。`character_profiles/my-melody.md` 仅为**示例档案**，新增角色 = 在 `character_profiles/` 新增一个 `.md`，无需改任何代码。
+- 档案为纯文字 Markdown，可附**用户原创**参考图（如 `character_profiles/pangdun.png`）。`character_profiles/pangdun.md` 为默认**原创角色档案**；`character_profiles/my-melody.md` 仅为文字风格示例（非默认）。新增角色 = 在 `character_profiles/` 新增一个 `.md`，无需改任何代码。
 - 从档案解析出同样的 `feature_map` 结构，`character.source = "profile"`，同样锁定。
 
 ## 7. 输出契约 (Output Contract)
@@ -148,5 +148,5 @@ description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情�
 - 仓库**不包含**任何官方受版权保护的图片素材（Sanrio 美乐蒂及其衍生产品、Logo、商标、水印）——详见 `NOTICE.md`。
 - 用户上传的参考图必须为用户拥有合法权利的图片；基于参考图生成的贴纸，其使用与发布责任由用户自行承担。
 - 生成结果中**不得复现**第三方商标、水印、官方 Logo，也不得声称与 Sanrio 等品牌存在关联。
-- 本技能为**通用**技能：美乐蒂只是 `character_profiles/` 中的一个示例档案，角色可任意扩展。
+- 本技能为**通用**技能：默认角色「胖墩」为**原创设计**（`character_profiles/pangdun.md` + 原创参考图 `pangdun.png`，可公开商用）；美乐蒂仅为文字风格示例（非默认），商用请使用原创角色。
 - 输出仅限贴纸图（及其必要的契约/提示词）；不生成海报、长图、GIF、视频。

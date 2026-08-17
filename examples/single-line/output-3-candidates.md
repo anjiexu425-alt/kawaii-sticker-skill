@@ -6,7 +6,7 @@
 ## 一次运行输出（3 个候选，共享同一句文案）
 
 - **文案**：三张**完全共享**「我真的会谢」（`text.content` 逐字、字节级相等，`verbatim: true`），画面中该文案恰好出现一次。
-- **角色**：`source: "profile"`，`feature_map` 取自 `character_profiles/my-melody.md`（示例文字档案），三份**完全相同**（锁定）。
+- **角色**：`source: "profile"`，`feature_map` 取自默认原创档案 `character_profiles/pangdun.md`（胖墩），三份**完全相同**（锁定）。
 - **风格**：`style_anchor` 三份**相同**。
 - **差异维度**：仅 `expression`、`pose_action`、`composition`、`sticker_elements` 三张互异。
 - **输出硬约束**：`output` 三份**相同**（1:1、透明 PNG、文字烧录）。
@@ -19,19 +19,19 @@
     "character": {
       "source": "profile",
       "feature_map": {
-        "head_shape": "圆润",
-        "ears": "头巾遮耳，露出内耳",
-        "eyes": "豆豆眼",
-        "nose_mouth": "小圆鼻，w 嘴",
-        "palette": {"主色": "奶油粉", "辅色": "白色", "点缀": "草莓红"},
-        "signature_accessories": ["红色头巾", "小蝴蝶结"],
-        "body_proportions": "Q 版 2 头身",
-        "personality_keywords": ["软萌", "委屈"],
-        "texture": "铅笔手绘线稿",
-        "derivation_notes": "取自 character_profiles/my-melody.md（示例文字档案，source=profile）"
+        "head_shape": "圆润梨形，头大身短",
+        "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+        "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+        "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
+        "palette": {"主色": "奶油白/暖象牙白 #faf0e2", "辅色": "浅灰米（内耳）", "点缀": "灰褐斑点、深棕黑眼、粉腮红"},
+        "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+        "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+        "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气"],
+        "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+        "derivation_notes": "取自 character_profiles/pangdun.md（原创角色档案，source=profile）"
       }
     },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "委屈巴巴",
     "pose_action": "蹲在角落画圈圈",
     "composition": "居中全身特写，配手帐虚线框",
@@ -58,19 +58,19 @@
     "character": {
       "source": "profile",
       "feature_map": {
-        "head_shape": "圆润",
-        "ears": "头巾遮耳，露出内耳",
-        "eyes": "豆豆眼",
-        "nose_mouth": "小圆鼻，w 嘴",
-        "palette": {"主色": "奶油粉", "辅色": "白色", "点缀": "草莓红"},
-        "signature_accessories": ["红色头巾", "小蝴蝶结"],
-        "body_proportions": "Q 版 2 头身",
-        "personality_keywords": ["软萌", "委屈"],
-        "texture": "铅笔手绘线稿",
-        "derivation_notes": "取自 character_profiles/my-melody.md（示例文字档案，source=profile）"
+        "head_shape": "圆润梨形，头大身短",
+        "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+        "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+        "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
+        "palette": {"主色": "奶油白/暖象牙白 #faf0e2", "辅色": "浅灰米（内耳）", "点缀": "灰褐斑点、深棕黑眼、粉腮红"},
+        "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+        "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+        "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气"],
+        "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+        "derivation_notes": "取自 character_profiles/pangdun.md（原创角色档案，source=profile）"
       }
     },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "无语翻白眼",
     "pose_action": "双手抱胸，侧身扭头",
     "composition": "半身斜角构图，头顶叹号气泡",
@@ -97,19 +97,19 @@
     "character": {
       "source": "profile",
       "feature_map": {
-        "head_shape": "圆润",
-        "ears": "头巾遮耳，露出内耳",
-        "eyes": "豆豆眼",
-        "nose_mouth": "小圆鼻，w 嘴",
-        "palette": {"主色": "奶油粉", "辅色": "白色", "点缀": "草莓红"},
-        "signature_accessories": ["红色头巾", "小蝴蝶结"],
-        "body_proportions": "Q 版 2 头身",
-        "personality_keywords": ["软萌", "委屈"],
-        "texture": "铅笔手绘线稿",
-        "derivation_notes": "取自 character_profiles/my-melody.md（示例文字档案，source=profile）"
+        "head_shape": "圆润梨形，头大身短",
+        "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+        "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+        "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
+        "palette": {"主色": "奶油白/暖象牙白 #faf0e2", "辅色": "浅灰米（内耳）", "点缀": "灰褐斑点、深棕黑眼、粉腮红"},
+        "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+        "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+        "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气"],
+        "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+        "derivation_notes": "取自 character_profiles/pangdun.md（原创角色档案，source=profile）"
       }
     },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "无奈假笑",
     "pose_action": "举起双手耸肩",
     "composition": "居中大头特写，配贴纸气泡",

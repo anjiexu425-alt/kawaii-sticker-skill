@@ -55,7 +55,7 @@ Prompt Contract v1 是**宿主无关（host-agnostic）、机器可校验（mach
 | `mode` | ✅ | enum：`"single_line"` \| `"theme"` | 模式；须与 SPEC §3.1 判定一致 |
 | `character.source` | ✅ | enum：`"image"` \| `"profile"` | 角色来源：参考图 / 文字档案 |
 | `character.feature_map` | ✅ | object（§3.1） | 锁定的角色特征；本次运行内所有契约**完全相同** |
-| `style_anchor` | ✅ | string | 风格锚点，固定为「美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)」；主题模式整套一致 |
+| `style_anchor` | ✅ | string | 风格锚点，由角色档案画风决定（默认胖墩：手绘绘本 × 日系萌系，hand-drawn picture-book × Japanese kawaii）；主题模式整套一致 |
 | `expression` | ✅ | string | 表情：开心 / 委屈 / 无语 / 元气…（单行模式 3 张**互异**） |
 | `pose_action` | ✅ | string | 姿势/动作：举手 / 蹲墙角 / 比心…（单行模式 3 张**互异**） |
 | `composition` | ✅ | string | 构图：居中特写 / 全身 / 对角 / 贴纸气泡…（单行模式 3 张**互异**） |
@@ -135,7 +135,7 @@ Prompt Contract v1 是**宿主无关（host-agnostic）、机器可校验（mach
 
 ## 5. 完整示例：单行模式（3 变体）
 
-> 输入（示例）：一句原样文案「我真的会谢」。角色：无参考图 → 回退文字档案 `character_profiles/my-melody.md`（`source: "profile"`）。
+> 输入（示例）：一句原样文案「我真的会谢」。角色：无参考图 → 回退默认原创档案 `character_profiles/pangdun.md`（`source: "profile"`）。
 > 一次运行输出**一个** `kss-prompt` 块，内容为 **3 个契约对象的数组**：
 
 ```kss-prompt
@@ -146,19 +146,19 @@ Prompt Contract v1 是**宿主无关（host-agnostic）、机器可校验（mach
     "character": {
       "source": "profile",
       "feature_map": {
-        "head_shape": "圆润",
-        "ears": "头巾遮耳，露出内耳",
-        "eyes": "豆豆眼",
-        "nose_mouth": "小圆鼻，w 嘴",
-        "palette": {"主色": "奶油粉", "辅色": "白色", "点缀": "草莓红"},
-        "signature_accessories": ["红色头巾", "小蝴蝶结"],
-        "body_proportions": "Q 版 2 头身",
-        "personality_keywords": ["软萌", "委屈"],
-        "texture": "铅笔手绘线稿",
-        "derivation_notes": "取自 character_profiles/my-melody.md（示例文字档案）"
+        "head_shape": "圆润梨形，头大身短",
+        "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+        "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+        "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
+        "palette": {"主色": "奶油白/暖象牙白 #faf0e2", "辅色": "浅灰米（内耳）", "点缀": "灰褐斑点、深棕黑眼、粉腮红"},
+        "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+        "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+        "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气"],
+        "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+        "derivation_notes": "取自 character_profiles/pangdun.md（原创角色档案，source=profile）"
       }
     },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "委屈巴巴",
     "pose_action": "蹲在角落画圈圈",
     "composition": "居中全身特写，配手帐虚线框",
@@ -185,19 +185,19 @@ Prompt Contract v1 是**宿主无关（host-agnostic）、机器可校验（mach
     "character": {
       "source": "profile",
       "feature_map": {
-        "head_shape": "圆润",
-        "ears": "头巾遮耳，露出内耳",
-        "eyes": "豆豆眼",
-        "nose_mouth": "小圆鼻，w 嘴",
-        "palette": {"主色": "奶油粉", "辅色": "白色", "点缀": "草莓红"},
-        "signature_accessories": ["红色头巾", "小蝴蝶结"],
-        "body_proportions": "Q 版 2 头身",
-        "personality_keywords": ["软萌", "委屈"],
-        "texture": "铅笔手绘线稿",
-        "derivation_notes": "取自 character_profiles/my-melody.md（示例文字档案）"
+        "head_shape": "圆润梨形，头大身短",
+        "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+        "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+        "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
+        "palette": {"主色": "奶油白/暖象牙白 #faf0e2", "辅色": "浅灰米（内耳）", "点缀": "灰褐斑点、深棕黑眼、粉腮红"},
+        "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+        "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+        "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气"],
+        "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+        "derivation_notes": "取自 character_profiles/pangdun.md（原创角色档案，source=profile）"
       }
     },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "无语翻白眼",
     "pose_action": "双手抱胸，侧身扭头",
     "composition": "半身斜角构图，头顶叹号气泡",
@@ -224,19 +224,19 @@ Prompt Contract v1 是**宿主无关（host-agnostic）、机器可校验（mach
     "character": {
       "source": "profile",
       "feature_map": {
-        "head_shape": "圆润",
-        "ears": "头巾遮耳，露出内耳",
-        "eyes": "豆豆眼",
-        "nose_mouth": "小圆鼻，w 嘴",
-        "palette": {"主色": "奶油粉", "辅色": "白色", "点缀": "草莓红"},
-        "signature_accessories": ["红色头巾", "小蝴蝶结"],
-        "body_proportions": "Q 版 2 头身",
-        "personality_keywords": ["软萌", "委屈"],
-        "texture": "铅笔手绘线稿",
-        "derivation_notes": "取自 character_profiles/my-melody.md（示例文字档案）"
+        "head_shape": "圆润梨形，头大身短",
+        "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+        "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+        "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
+        "palette": {"主色": "奶油白/暖象牙白 #faf0e2", "辅色": "浅灰米（内耳）", "点缀": "灰褐斑点、深棕黑眼、粉腮红"},
+        "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+        "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+        "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气"],
+        "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+        "derivation_notes": "取自 character_profiles/pangdun.md（原创角色档案，source=profile）"
       }
     },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "无奈假笑",
     "pose_action": "举起双手耸肩",
     "composition": "居中大头特写，配贴纸气泡",
@@ -277,19 +277,19 @@ Prompt Contract v1 是**宿主无关（host-agnostic）、机器可校验（mach
     "character": {
       "source": "image",
       "feature_map": {
-        "head_shape": "圆润，奶油白",
-        "ears": "长垂耳兔耳，内耳蜜桃粉",
-        "eyes": "大眼高光，圆溜溜",
-        "nose_mouth": "小圆鼻，w 嘴",
-        "palette": {"主色": "奶油白", "辅色": "蜜桃粉", "点缀": "抹茶绿"},
-        "signature_accessories": ["珍珠发夹", "小工牌"],
-        "body_proportions": "Q 版 2 头身",
-        "personality_keywords": ["软萌", "元气", "打工人"],
-        "texture": "铅笔手绘线稿，粉彩平涂",
-        "derivation_notes": "示例：假设用户上传 1 张参考图；字段为演示形态，实际运行时按 SPEC §4.1 提取并填写 unknown/置信度"
+        "head_shape": "圆润梨形，头大身短",
+        "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+        "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+        "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
+        "palette": {"主色": "奶油白/暖象牙白 #faf0e2", "辅色": "浅灰米（内耳）", "点缀": "灰褐斑点、深棕黑眼、粉腮红"},
+        "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+        "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+        "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气", "打工人"],
+        "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+        "derivation_notes": "由参考图 character_profiles/pangdun.png 提取（用户原创资产）；斑点分布跨贴纸保持稳定；实际运行时按 SPEC §4.1 处理 unknown"
       }
     },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "元气满满",
     "pose_action": "握拳比心",
     "composition": "全身居中，手帐虚线框",
@@ -316,19 +316,19 @@ Prompt Contract v1 是**宿主无关（host-agnostic）、机器可校验（mach
     "character": {
       "source": "image",
       "feature_map": {
-        "head_shape": "圆润，奶油白",
-        "ears": "长垂耳兔耳，内耳蜜桃粉",
-        "eyes": "大眼高光，圆溜溜",
-        "nose_mouth": "小圆鼻，w 嘴",
-        "palette": {"主色": "奶油白", "辅色": "蜜桃粉", "点缀": "抹茶绿"},
-        "signature_accessories": ["珍珠发夹", "小工牌"],
-        "body_proportions": "Q 版 2 头身",
-        "personality_keywords": ["软萌", "元气", "打工人"],
-        "texture": "铅笔手绘线稿，粉彩平涂",
-        "derivation_notes": "示例：假设用户上传 1 张参考图；字段为演示形态，实际运行时按 SPEC §4.1 提取并填写 unknown/置信度"
+        "head_shape": "圆润梨形，头大身短",
+        "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+        "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+        "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
+        "palette": {"主色": "奶油白/暖象牙白 #faf0e2", "辅色": "浅灰米（内耳）", "点缀": "灰褐斑点、深棕黑眼、粉腮红"},
+        "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+        "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+        "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气", "打工人"],
+        "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+        "derivation_notes": "由参考图 character_profiles/pangdun.png 提取（用户原创资产）；斑点分布跨贴纸保持稳定；实际运行时按 SPEC §4.1 处理 unknown"
       }
     },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "心虚回头",
     "pose_action": "回头偷瞄，食指放唇边",
     "composition": "侧身斜角构图，便签条遮挡半脸",
@@ -355,19 +355,19 @@ Prompt Contract v1 是**宿主无关（host-agnostic）、机器可校验（mach
     "character": {
       "source": "image",
       "feature_map": {
-        "head_shape": "圆润，奶油白",
-        "ears": "长垂耳兔耳，内耳蜜桃粉",
-        "eyes": "大眼高光，圆溜溜",
-        "nose_mouth": "小圆鼻，w 嘴",
-        "palette": {"主色": "奶油白", "辅色": "蜜桃粉", "点缀": "抹茶绿"},
-        "signature_accessories": ["珍珠发夹", "小工牌"],
-        "body_proportions": "Q 版 2 头身",
-        "personality_keywords": ["软萌", "元气", "打工人"],
-        "texture": "铅笔手绘线稿，粉彩平涂",
-        "derivation_notes": "示例：假设用户上传 1 张参考图；字段为演示形态，实际运行时按 SPEC §4.1 提取并填写 unknown/置信度"
+        "head_shape": "圆润梨形，头大身短",
+        "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+        "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+        "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
+        "palette": {"主色": "奶油白/暖象牙白 #faf0e2", "辅色": "浅灰米（内耳）", "点缀": "灰褐斑点、深棕黑眼、粉腮红"},
+        "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+        "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+        "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气", "打工人"],
+        "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+        "derivation_notes": "由参考图 character_profiles/pangdun.png 提取（用户原创资产）；斑点分布跨贴纸保持稳定；实际运行时按 SPEC §4.1 处理 unknown"
       }
     },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "兴奋咧嘴",
     "pose_action": "奔跑起飞，背包甩起",
     "composition": "对角动态构图，速度线",
@@ -394,19 +394,19 @@ Prompt Contract v1 是**宿主无关（host-agnostic）、机器可校验（mach
     "character": {
       "source": "image",
       "feature_map": {
-        "head_shape": "圆润，奶油白",
-        "ears": "长垂耳兔耳，内耳蜜桃粉",
-        "eyes": "大眼高光，圆溜溜",
-        "nose_mouth": "小圆鼻，w 嘴",
-        "palette": {"主色": "奶油白", "辅色": "蜜桃粉", "点缀": "抹茶绿"},
-        "signature_accessories": ["珍珠发夹", "小工牌"],
-        "body_proportions": "Q 版 2 头身",
-        "personality_keywords": ["软萌", "元气", "打工人"],
-        "texture": "铅笔手绘线稿，粉彩平涂",
-        "derivation_notes": "示例：假设用户上传 1 张参考图；字段为演示形态，实际运行时按 SPEC §4.1 提取并填写 unknown/置信度"
+        "head_shape": "圆润梨形，头大身短",
+        "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+        "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+        "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
+        "palette": {"主色": "奶油白/暖象牙白 #faf0e2", "辅色": "浅灰米（内耳）", "点缀": "灰褐斑点、深棕黑眼、粉腮红"},
+        "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+        "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+        "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气", "打工人"],
+        "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+        "derivation_notes": "由参考图 character_profiles/pangdun.png 提取（用户原创资产）；斑点分布跨贴纸保持稳定；实际运行时按 SPEC §4.1 处理 unknown"
       }
     },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "疲惫眯眼",
     "pose_action": "双手捧大杯咖啡",
     "composition": "居中特写，蒸汽气泡",
@@ -433,19 +433,19 @@ Prompt Contract v1 是**宿主无关（host-agnostic）、机器可校验（mach
     "character": {
       "source": "image",
       "feature_map": {
-        "head_shape": "圆润，奶油白",
-        "ears": "长垂耳兔耳，内耳蜜桃粉",
-        "eyes": "大眼高光，圆溜溜",
-        "nose_mouth": "小圆鼻，w 嘴",
-        "palette": {"主色": "奶油白", "辅色": "蜜桃粉", "点缀": "抹茶绿"},
-        "signature_accessories": ["珍珠发夹", "小工牌"],
-        "body_proportions": "Q 版 2 头身",
-        "personality_keywords": ["软萌", "元气", "打工人"],
-        "texture": "铅笔手绘线稿，粉彩平涂",
-        "derivation_notes": "示例：假设用户上传 1 张参考图；字段为演示形态，实际运行时按 SPEC §4.1 提取并填写 unknown/置信度"
+        "head_shape": "圆润梨形，头大身短",
+        "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+        "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+        "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
+        "palette": {"主色": "奶油白/暖象牙白 #faf0e2", "辅色": "浅灰米（内耳）", "点缀": "灰褐斑点、深棕黑眼、粉腮红"},
+        "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+        "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+        "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气", "打工人"],
+        "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+        "derivation_notes": "由参考图 character_profiles/pangdun.png 提取（用户原创资产）；斑点分布跨贴纸保持稳定；实际运行时按 SPEC §4.1 处理 unknown"
       }
     },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "无语死鱼眼",
     "pose_action": "双手叉腰叹气",
     "composition": "半身构图，头顶画饼涂鸦",
@@ -472,19 +472,19 @@ Prompt Contract v1 是**宿主无关（host-agnostic）、机器可校验（mach
     "character": {
       "source": "image",
       "feature_map": {
-        "head_shape": "圆润，奶油白",
-        "ears": "长垂耳兔耳，内耳蜜桃粉",
-        "eyes": "大眼高光，圆溜溜",
-        "nose_mouth": "小圆鼻，w 嘴",
-        "palette": {"主色": "奶油白", "辅色": "蜜桃粉", "点缀": "抹茶绿"},
-        "signature_accessories": ["珍珠发夹", "小工牌"],
-        "body_proportions": "Q 版 2 头身",
-        "personality_keywords": ["软萌", "元气", "打工人"],
-        "texture": "铅笔手绘线稿，粉彩平涂",
-        "derivation_notes": "示例：假设用户上传 1 张参考图；字段为演示形态，实际运行时按 SPEC §4.1 提取并填写 unknown/置信度"
+        "head_shape": "圆润梨形，头大身短",
+        "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+        "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+        "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
+        "palette": {"主色": "奶油白/暖象牙白 #faf0e2", "辅色": "浅灰米（内耳）", "点缀": "灰褐斑点、深棕黑眼、粉腮红"},
+        "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+        "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+        "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气", "打工人"],
+        "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+        "derivation_notes": "由参考图 character_profiles/pangdun.png 提取（用户原创资产）；斑点分布跨贴纸保持稳定；实际运行时按 SPEC §4.1 处理 unknown"
       }
     },
-    "style_anchor": "美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)",
+    "style_anchor": "手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)",
     "expression": "开心眯眼笑",
     "pose_action": "转圈撒花",
     "composition": "全身旋转构图，花瓣飘落",

@@ -59,8 +59,12 @@ Kawaii Sticker Skill/
 │   │        档案目录说明：如何新增角色档案、档案选择规则（SPEC §4.2）【characters】
 │   ├── _template.md
 │   │        角色档案模板：按 SPEC §4.3 特征图字段设计的可填写模板【characters】
+│   ├── pangdun.md
+│   │        默认原创角色档案：胖墩（手绘绘本 × 日系萌系画风）；可公开商用（SPEC §4.2）【characters】
+│   ├── pangdun.png
+│   │        胖墩用户原创参考图（用户自有资产；仓库图片白名单仅限本目录）【characters】
 │   ├── my-melody.md
-│   │        示例档案：美乐蒂（My Melody）文字版风格与特征描述；纯文字、无任何官方素材（SPEC §4.2 / NOTICE.md）【characters】
+│   │        非默认文字风格示例：美乐蒂（My Melody）文字版风格描述；纯文字、无官方素材（SPEC §4.2 / NOTICE.md）【characters】
 │   └── .gitkeep
 │           占位【本阶段】
 │
@@ -138,7 +142,7 @@ Kawaii Sticker Skill/
 | repo-structure（本阶段） | `docs/STRUCTURE.md`、各目录 `.gitkeep` 占位 |
 | skill | `SKILL.md` |
 | prompt-contract | `docs/PROMPT_CONTRACT.md` |
-| characters | `character_profiles/README.md`、`character_profiles/_template.md`、`character_profiles/my-melody.md` |
+| characters | `character_profiles/README.md`、`character_profiles/_template.md`、`character_profiles/pangdun.md`、`character_profiles/pangdun.png`（用户原创）、`character_profiles/my-melody.md` |
 | adapters | `adapters/claude-code.md`、`adapters/codex.md`、`adapters/deepseek-harness.md`、`adapters/generic-prompt.md` |
 | examples | `examples/README.md`、`examples/single-line/input.md`、`examples/single-line/input-with-reference.md`、`examples/single-line/output-3-candidates.md`、`examples/single-line/output-with-reference.md`、`examples/theme/input.md`、`examples/theme/output-6-pack.md` |
 | tests | `tests/README.md`、`tests/run_tests.sh`、`tests/validate_structure.py`、`tests/validate_examples.py`、`tests/test_checklist.md`、`tests/fixtures/` 内容 |

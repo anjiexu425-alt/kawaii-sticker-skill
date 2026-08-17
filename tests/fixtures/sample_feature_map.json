@@ -1,16 +1,16 @@
 {
-  "head_shape": "圆润",
-  "ears": "头巾遮耳，露出内耳",
-  "eyes": "豆豆眼",
-  "nose_mouth": "小圆鼻，w 嘴",
+  "head_shape": "圆润梨形，头大身短",
+  "ears": "长垂耳，垂在脸两侧；外侧奶白，内侧浅灰米带灰褐斑点",
+  "eyes": "大深棕黑圆眼，水润高光，视线有方向",
+  "nose_mouth": "小深棕三角鼻，小巧嘴型（默认微张露粉舌）",
   "palette": {
-    "主色": "奶油粉",
-    "辅色": "白色",
-    "点缀": "草莓红"
+    "主色": "奶油白/暖象牙白 #faf0e2",
+    "辅色": "浅灰米（内耳）",
+    "点缀": "灰褐斑点、深棕黑眼、粉腮红"
   },
-  "signature_accessories": ["红色头巾", "小蝴蝶结"],
-  "body_proportions": "Q 版 2 头身",
-  "personality_keywords": ["软萌", "委屈"],
-  "texture": "铅笔手绘线稿",
-  "derivation_notes": "取自 character_profiles/my-melody.md（示例文字档案，source=profile）"
+  "signature_accessories": ["头顶翘呆毛", "大蓬松长尾（向右弯曲）", "灰褐斑点（长耳/身侧/尾巴）"],
+  "body_proportions": "小巧胖乎乎梨形，头大身短，小短手小短脚",
+  "personality_keywords": ["软萌", "单纯", "活泼", "憨憨有灵气"],
+  "texture": "柔软铅笔/细线稿、轻微手绘纹理、细腻绒毛、低饱和",
+  "derivation_notes": "取自 character_profiles/pangdun.md（原创角色档案，source=profile）"
 }

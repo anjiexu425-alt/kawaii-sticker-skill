@@ -13,7 +13,7 @@
 
 | 文件 | 内容 | 角色来源 |
 |---|---|---|
-| `single-line/input.md` | 单行模式输入：「我真的会谢」，**无参考图** | profile 回退（`character_profiles/my-melody.md`） |
+| `single-line/input.md` | 单行模式输入：「我真的会谢」，**无参考图** | profile 回退（默认原创档案 `character_profiles/pangdun.md`） |
 | `single-line/output-3-candidates.md` | 单行模式输出：**1 个 `kss-prompt` 块**，内含 **3 个契约对象** | `source: "profile"` |
 | `single-line/input-with-reference.md` | 单行模式输入：「我真的会谢」+ **1 张参考图**（文字描述，不嵌图） | image 特征图管线 |
 | `single-line/output-with-reference.md` | 单行模式输出：3 个契约对象，`feature_map` 由参考图推导 | `source: "image"` |

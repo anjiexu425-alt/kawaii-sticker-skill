@@ -7,7 +7,7 @@
 | 契约字段 | 翻译进提示词 |
 |---|---|
 | `character.feature_map` | 逐字段拼写：头型、耳朵、眼睛、鼻子嘴、配色、标志性配饰、身体比例、质感 |
-| `style_anchor` | 原样放入：`美乐蒂手绘 / 手帐风 (My Melody-style hand-drawn, journal/diary aesthetic)` |
+| `style_anchor` | 原样放入（由角色档案画风决定；默认胖墩：`手绘绘本 × 日系萌系 (hand-drawn picture-book × Japanese kawaii: soft pencil/light linework, gentle hand-drawn texture, fine fluffy fur, soft low-saturation palette)`） |
 | `expression` / `pose_action` / `composition` / `sticker_elements` | 组成该张的画面描述（一张一景） |
 | `text.content` | **逐字**放入，并要求「画面中该文案恰好出现一次」，配合 `text.typography`（字体 / 描边 / 排版） |
 | `output` | 硬约束原样声明：1:1 方形、PNG、透明背景、文字烧录、无水印 |

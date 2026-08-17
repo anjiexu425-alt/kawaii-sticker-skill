@@ -8,8 +8,9 @@ Checks (stdlib Python 3 only; no third-party dependencies):
   B. SKILL.md starts with YAML frontmatter ("---") containing a `name` key
      and a non-empty `description` key (SPEC M1). Parsed with plain string
      operations — no YAML library.
-  C. The repository contains NO image binaries anywhere in the tree
-     (SPEC M3/M4, NOTICE.md): any file with an image extension
+  C. The repository contains no image binaries EXCEPT user-owned
+     character reference images under character_profiles/ (SPEC M3/M4,
+     NOTICE.md): any file with an image extension elsewhere
      (.png/.jpg/.jpeg/.gif/.webp/.bmp/.svg) fails the check.
 
 Exit code: 0 when every check passes, 1 when any check fails.
@@ -36,6 +37,7 @@ REQUIRED_FILES = [
     "docs/SPEC.md",
     "docs/PROMPT_CONTRACT.md",
     "docs/STRUCTURE.md",
+    "character_profiles/pangdun.md",
     "character_profiles/my-melody.md",
     "adapters/README.md",
     "examples/README.md",
@@ -51,8 +53,11 @@ REQUIRED_FILES = [
 ]
 
 # Any file ending with one of these extensions (case-insensitive) is treated
-# as an image binary — the repo must contain none (SPEC M3/M4, NOTICE.md).
+# as an image binary. Image binaries are allowed ONLY under character_profiles/
+# (user-owned character reference images, e.g. pangdun.png — SPEC M3/M4); any
+# image elsewhere fails the check.
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".svg"}
+IMAGES_ALLOWED_DIR = "character_profiles"
 
 failures = []
 
@@ -148,12 +153,13 @@ def find_image_files(root):
     return found
 
 
-images = find_image_files(ROOT)
+images = [rel for rel in find_image_files(ROOT)
+          if not rel.startswith(IMAGES_ALLOWED_DIR + os.sep)]
 if images:
-    check("repo contains no image binaries", False,
+    check("repo image policy: no image binaries outside {}".format(IMAGES_ALLOWED_DIR), False,
           "found: {}".format(", ".join(images)))
 else:
-    check("repo contains no image binaries (png/jpg/jpeg/gif/webp/bmp/svg)", True)
+    check("repo image policy: no image binaries outside character_profiles/ (user-owned character refs allowed)", True)
 
 
 # ---------------------------------------------------------------------------
