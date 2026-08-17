@@ -1,0 +1,16 @@
+{
+  "head_shape": "圆润",
+  "ears": "头巾遮耳，露出内耳",
+  "eyes": "豆豆眼",
+  "nose_mouth": "小圆鼻，w 嘴",
+  "palette": {
+    "主色": "奶油粉",
+    "辅色": "白色",
+    "点缀": "草莓红"
+  },
+  "signature_accessories": ["红色头巾", "小蝴蝶结"],
+  "body_proportions": "Q 版 2 头身",
+  "personality_keywords": ["软萌", "委屈"],
+  "texture": "铅笔手绘线稿",
+  "derivation_notes": "取自 character_profiles/my-melody.md（示例文字档案，source=profile）"
+}
