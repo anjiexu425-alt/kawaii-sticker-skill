@@ -40,7 +40,7 @@ Kawaii Sticker Skill 是一个**通用的、开源的 AI Skill**：用户将其�
 ### 1.3 非目标 (Non-Goals)
 
 - ❌ **不是网站/应用**：无服务器、无后端、无 Web UI、无 API 服务、无数据库。
-- ❌ **不打包官方素材**：仓库内不包含任何受版权保护的官方图片（Sanrio 美乐蒂及其衍生品、Logo、商标、水印）。IP 处理见 `NOTICE.md`。
+- ❌ **不打包官方素材**：仓库内不包含任何第三方受版权保护的官方角色图片、Logo、商标、水印。IP 处理见 `NOTICE.md`。
 - ❌ **不绑定供应商**：不依赖某个特定生图 API；Prompt Contract 保证任何宿主都能消费输出。
 - ❌ **不做图库/训练集**：不聚合、不分发用户生成图片。
 - ❌ **不做图片编辑器**：不提供图层/画布/导出等编辑能力。
@@ -116,7 +116,7 @@ Kawaii Sticker Skill 是一个**通用的、开源的 AI Skill**：用户将其�
 - 无参考图时，加载 `character_profiles/` 下的**文字档案**。
 - 选择规则：用户指定档案名 > `SKILL.md` 中声明的默认档案 > 仓库首个可用档案（当前默认原创角色 `character_profiles/pangdun.md`，胖墩）。
 - 将档案文字内容解析为同样的 `feature_map` 结构，`character.source = "profile"`。
-- 仓库保持**通用**：`pangdun.md` 为默认原创角色；`my-melody.md` 仅为文字风格示例（非默认）；新增角色只需增加一个 `.md` 档案文件，无需改代码。
+- 仓库保持**通用**：`pangdun.md` 为默认原创角色；新增角色只需增加一个 `.md` 档案文件，无需改代码。
 
 ### 4.3 特征图字段清单 (Feature-map Field List)
 
@@ -281,7 +281,7 @@ Kawaii Sticker Skill 是一个**通用的、开源的 AI Skill**：用户将其�
 |---|---|---|
 | M1 | 仓库存在 `SKILL.md`，YAML frontmatter 含 `name` 与 `description` | 解析 frontmatter |
 | M2 | 仓库存在 `docs/SPEC.md`、`docs/PROMPT_CONTRACT.md`、`docs/STRUCTURE.md` | 文件存在性 |
-| M3 | `character_profiles/` 至少含一个档案；默认 `pangdun.md`（原创）+ 参考图 `pangdun.png`（用户原创资产，允许）；`my-melody.md` 为纯文字 | 文件检查 + 图片白名单（仅 `character_profiles/`） |
+| M3 | `character_profiles/` 至少含一个档案；默认 `pangdun.md`（原创）+ 参考图 `pangdun.png`（用户原创资产，允许） | 文件检查 + 图片白名单（仅 `character_profiles/`） |
 | M4 | 仓库**不包含**官方图片素材；`tests/fixtures/` 内图片均为原创 | 目录策略 + fixture 声明 |
 | M5 | `examples/` 中单行模式示例契约与主题模式示例契约全部通过 §6.3 机器校验 | 契约校验器 |
 | M6 | 契约校验器（§6.3 规则 1–6）实现并可运行 | 单元测试通过 |

@@ -5,7 +5,7 @@ description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情�
 
 # Kawaii Sticker Skill — 助手指令 (Skill Rules)
 
-> 本文件是技能的**入口指令（entry instructions）**。权威内容规格见 `docs/SPEC.md`；机器校验细节以 `docs/PROMPT_CONTRACT.md` 为准；仓库结构与文件归属见 `docs/STRUCTURE.md`；第三方 IP 边界见 `NOTICE.md`。本技能是**通用**的：默认原创角色为「胖墩」（`character_profiles/pangdun.md`）；仓库中的美乐蒂（My Melody）仅为文字版风格示例档案（非默认、非官方素材）。
+> 本文件是技能的**入口指令（entry instructions）**。权威内容规格见 `docs/SPEC.md`；机器校验细节以 `docs/PROMPT_CONTRACT.md` 为准；仓库结构与文件归属见 `docs/STRUCTURE.md`；第三方 IP 边界见 `NOTICE.md`。本技能是**通用**的：默认原创角色为「胖墩」（`character_profiles/pangdun.md`），角色可任意扩展。
 
 ## 1. 用途与触发条件 (When to Use)
 
@@ -119,7 +119,7 @@ description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情�
 
 ### 6.3 档案使用 (Profile Usage)
 
-- 档案为纯文字 Markdown，可附**用户原创**参考图（如 `character_profiles/pangdun.png`）。`character_profiles/pangdun.md` 为默认**原创角色档案**；`character_profiles/my-melody.md` 仅为文字风格示例（非默认）。新增角色 = 在 `character_profiles/` 新增一个 `.md`，无需改任何代码。
+- 档案为纯文字 Markdown，可附**用户原创**参考图（如 `character_profiles/pangdun.png`）。`character_profiles/pangdun.md` 为默认**原创角色档案**。新增角色 = 在 `character_profiles/` 新增一个 `.md`，无需改任何代码。
 - 从档案解析出同样的 `feature_map` 结构，`character.source = "profile"`，同样锁定。
 
 ## 7. 输出契约 (Output Contract)
@@ -145,8 +145,8 @@ description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情�
 
 ## 9. 边界与合规 (Boundaries & Compliance)
 
-- 仓库**不包含**任何官方受版权保护的图片素材（Sanrio 美乐蒂及其衍生产品、Logo、商标、水印）——详见 `NOTICE.md`。
+- 仓库**不包含**任何第三方受版权保护的官方角色图片、Logo、商标、水印——详见 `NOTICE.md`。
 - 用户上传的参考图必须为用户拥有合法权利的图片；基于参考图生成的贴纸，其使用与发布责任由用户自行承担。
-- 生成结果中**不得复现**第三方商标、水印、官方 Logo，也不得声称与 Sanrio 等品牌存在关联。
-- 本技能为**通用**技能：默认角色「胖墩」为**原创设计**（`character_profiles/pangdun.md` + 原创参考图 `pangdun.png`，可公开商用）；美乐蒂仅为文字风格示例（非默认），商用请使用原创角色。
+- 生成结果中**不得复现**第三方商标、水印、官方 Logo，也不得声称与任何第三方品牌存在关联。
+- 本技能为**通用**技能：默认角色「胖墩」为**原创设计**（`character_profiles/pangdun.md` + 原创参考图 `pangdun.png`），可公开商用；请勿使用第三方版权角色与素材。
 - 输出仅限贴纸图（及其必要的契约/提示词）；不生成海报、长图、GIF、视频。

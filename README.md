@@ -4,7 +4,7 @@
 >
 > **这不是网站 / Web App**：无服务器、无后端、无部署——它只是一套随取随用的「指令 + 资产包」。
 >
-> 🌸 通用设计：默认角色为**原创**「胖墩」（`character_profiles/pangdun.md` + 参考图）；任何角色都能通过参考图或文字档案接入；美乐蒂仅为文字风格示例（非默认）。
+> 🌸 通用设计：默认角色为**原创**「胖墩」（`character_profiles/pangdun.md` + 参考图）；任何角色都能通过参考图或文字档案接入。
 
 ## 特性 (Features)
 
@@ -92,8 +92,7 @@ kawaii-sticker-skill/
 │   ├── README.md                #   档案使用与新增指南
 │   ├── _template.md             #   新增角色模板
 │   ├── pangdun.md               #   默认原创角色「胖墩」档案
-│   ├── pangdun.png              #   胖墩原创参考图（用户自有资产）
-│   └── my-melody.md             #   文字风格示例（非默认）
+│   └── pangdun.png              #   胖墩原创参考图（用户自有资产）
 ├── adapters/                    # 各宿主接入与能力协商
 │   ├── README.md                #   能力矩阵
 │   ├── claude-code.md
@@ -133,7 +132,7 @@ bash tests/run_tests.sh
 ## 许可与知识产权 (License & IP)
 
 - 代码与文档：**MIT License**（见 [LICENSE](LICENSE)）。
-- 本仓库**不含**任何受版权保护的官方图片素材（Sanrio 美乐蒂及其衍生产品、Logo、商标、水印）；默认角色「胖墩」为**用户原创设计**（`character_profiles/pangdun.md` + `pangdun.png`），可公开商用；`character_profiles/my-melody.md` 仅为文字版风格示例。详见 [NOTICE.md](NOTICE.md)。
+- 本仓库**不含**任何第三方受版权保护的官方角色图片、Logo、商标、水印；默认角色「胖墩」为**用户原创设计**（`character_profiles/pangdun.md` + `pangdun.png`），可公开商用。详见 [NOTICE.md](NOTICE.md)。
 
 ## 贡献 (Contributing)
 

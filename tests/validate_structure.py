@@ -38,7 +38,6 @@ REQUIRED_FILES = [
     "docs/PROMPT_CONTRACT.md",
     "docs/STRUCTURE.md",
     "character_profiles/pangdun.md",
-    "character_profiles/my-melody.md",
     "adapters/README.md",
     "examples/README.md",
     "examples/single-line/input.md",
