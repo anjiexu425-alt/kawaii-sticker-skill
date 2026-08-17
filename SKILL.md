@@ -1,6 +1,6 @@
 ---
 name: kawaii-sticker-skill
-description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情包) in a hand-drawn picture-book × Japanese kawaii style (手绘绘本 × 日系萌系), character-reference-based sticker generation, or a sticker pack built from one sentence or one theme. Two modes: single-line mode keeps the user's copy verbatim and produces exactly 3 candidate stickers that share the same text and differ in expression, pose/action, composition, and sticker decorations; theme mode writes the copy itself and produces one set of 6 stickers with clearly distinct copy, emotion, pose, and composition but one consistent style. The character is locked from 1-3 user-provided reference images (derived as a structured feature map) or falls back to a text character profile from character_profiles/ (default original character 胖墩 Pangdun, pangdun.md). Output is 1:1 transparent-background PNG with the text baked into the image, produced through the host's native image tool when available, otherwise through a standardized machine-checkable prompt contract."
+description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情包) in a hand-drawn picture-book × Japanese kawaii style (手绘绘本 × 日系萌系), character-reference-based sticker generation, or a sticker pack built from one sentence or one theme. Ask the user which mode to use when the request is ambiguous — single-line mode (one verbatim sentence → exactly 3 candidate stickers sharing that text) or theme mode (one theme word → one 6-sticker pack with distinct copy/emotion/pose and one consistent style). Never generate a batch without a confirmed mode. The character is locked from 1-3 user-provided reference images (derived as a structured feature map) or falls back to a text character profile from character_profiles/ (default original character 胖墩 Pangdun, pangdun.md). Output is 1:1 transparent-background PNG with the text baked into the image, produced through the host's native image tool when available, otherwise through a standardized machine-checkable prompt contract."
 ---
 
 # Kawaii Sticker Skill — 助手指令 (Skill Rules)
@@ -22,7 +22,7 @@ description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情�
 
 每次生成运行按以下 6 步执行（通用管道：输入 → 模式识别 → 角色解析（锁定） → 能力协商 → 契约/提示词构建 → 生成 → 硬约束校验 → 交付）：
 
-1. **判定模式**（Mode Detection）：判定本次是单行模式还是主题模式（细则见 §2.1）。
+1. **确认模式（Mode Gate，硬门槛）**：判定本次是单行模式还是主题模式（细则见 §2.1）。**输入无法明确判定模式时，必须先询问用户；未确认模式前禁止开始生成**（不得自作主张批量输出任意数量）。
 2. **角色设定**（Character Setup）：有参考图 → 走特征图（feature map）提取协议（§6）；无参考图 → 从 `character_profiles/` 加载文字档案。角色在本次运行内**锁定（locked）**。
 3. **能力协商**（Capability Negotiation）：检测宿主是否有原生生图工具（§2.3）。有 → 直接调用；没有 → 输出标准化 Prompt Contract。**绝不声称宿主不存在的工具**。
 4. **生成**（Generation）：按模式构建 3 或 6 份契约/提示词并生成。
@@ -36,7 +36,17 @@ description: "Use when the user asks for kawaii chat stickers (贴纸 / 表情�
 1. 输入被引号包裹，或用户明确「这句话 / 按原样 / 文案不要改」→ **单行模式**。
 2. 输入是贴纸诉求 + 一句短口语话术（非引号、≤ 20 字左右、像聊天话术）→ **单行模式**。
 3. 输入是名词性主题（如「打工人」「恋爱脑」「考试周」）且非口语话术 → **主题模式**。
-4. 无法判定 → **询问用户**；若宿主不支持追问，默认按主题模式处理，并在输出中说明该假设。
+4. 无法判定（如用户只说「帮胖墩做表情包」而未给文案或主题）→ **必须先询问用户**：一句话问清「单句模式＝给我一句原样文案，出 3 张；主题模式＝给我一个主题词，出 6 张」。**未确认模式前禁止生成**。
+5. **例外（仅限无交互宿主）**：仅当宿主完全不支持追问（单轮无交互输出）时，才允许默认按主题模式处理，并必须在交付说明**显著标注**该假设。
+
+### 2.1.1 模式询问话术 (Mode Clarification Prompts)
+
+需要询问时，用**一句话**给出两个选项（不要展开成冗长问卷）：
+
+- 「你要哪种？① 单句模式：给我一句文案（原样保留），出 3 张候选；② 主题模式：给我一个主题词，我自拟文案出 6 张一套。」
+- 若用户已给一句文案但未说明模式 → 直接判定**单行模式**，不必询问。
+- 若用户已给主题词但未说明模式 → 直接判定**主题模式**，不必询问。
+- 一次运行只能是一个模式：单行 = **恰好 3 张**；主题 = **恰好 6 张**。**不得在未确认模式下自由批量生成任意数量**；用户要求「多来几张」时，仍按选定模式重跑（单行多组 3 张 / 主题多组 6 张），不改变单次运行的数量契约。
 
 ### 2.2 角色设定 (Character Setup)
 

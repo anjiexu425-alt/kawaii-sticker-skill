@@ -6,7 +6,7 @@
 
 - [ ] 运行环境确认：`bash tests/run_tests.sh` 退出码为 0（SPEC M8）。
 - [ ] 已读取 `SKILL.md`、`docs/SPEC.md`、`docs/PROMPT_CONTRACT.md` 的相关章节。
-- [ ] 已判定本次模式（单行 or 主题）且与输入匹配（SPEC §3.1）。
+- [ ] 已判定本次模式（单行 or 主题）且与输入匹配（SPEC §3.1）；**输入不明确时已先询问用户，未在未确认模式下生成**。
 - [ ] 已解析角色（有参考图 → feature map 管线；无参考图 → 文字档案），并**锁定** `feature_map`。
 
 ## 1. 单行模式 (Single-line Mode)
