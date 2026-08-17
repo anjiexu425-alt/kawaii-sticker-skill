@@ -22,7 +22,7 @@
 1. 获取本仓库：
 
    ```bash
-   git clone <repo-url> kawaii-sticker-skill
+   git clone https://github.com/anjiexu425-alt/kawaii-sticker-skill
    ```
 
 2. 按你的宿主安装（详见 [adapters/](adapters/)）：

@@ -5,7 +5,7 @@
 ## 1. 安装 (Install)
 
 ```bash
-git clone <repo-url> kawaii-sticker-skill
+git clone https://github.com/anjiexu425-alt/kawaii-sticker-skill
 mkdir -p ~/.claude/skills
 cp -r kawaii-sticker-skill ~/.claude/skills/kawaii-sticker-skill
 ```

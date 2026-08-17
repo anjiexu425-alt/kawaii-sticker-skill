@@ -17,7 +17,7 @@ DeepSeek Harness 通过 **agent-presets** 组合条目发现技能，每个技�
 安装示例（以用户 preset 为例，路径以你的 profile 布局为准）：
 
 ```bash
-git clone <repo-url> kawaii-sticker-skill
+git clone https://github.com/anjiexu425-alt/kawaii-sticker-skill
 mkdir -p ~/.config/dsh/agent-presets/<preset>/skills
 cp -r kawaii-sticker-skill ~/.config/dsh/agent-presets/<preset>/skills/kawaii-sticker-skill
 ```
